@@ -11,11 +11,20 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String nome;
+    private String descricao;
+    private Integer preco;
+    
+    public Produto() {
+    }
 
+    public Produto(String nome, String descricao,  Integer preco) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+    }
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -36,15 +45,15 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    private String descricao;
+    
 
-    public BigDecimal getPreco() {
+    public  Integer getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco( Integer preco) {
         this.preco = preco;
     }
 
-    private BigDecimal preco;
+  
 }
