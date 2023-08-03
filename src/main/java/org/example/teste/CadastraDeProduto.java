@@ -7,6 +7,7 @@ import org.example.dao.ProdutoDao;
 import org.example.util.JpaUtil;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CadastraDeProduto {
@@ -21,13 +22,13 @@ public class CadastraDeProduto {
         List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
         todos.forEach(p2 -> System.out.println(p.getNome()));
 
-        Integer precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+        BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
         System.out.println("Preco do Produto: " +precoDoProduto);
     }
 
     private static void cadastrarProduto() {
         Categoria celulares = new Categoria("CELULARES");
-        Produto celular = new Produto("Xiaomi Redmi", "Muito legal", 800, celulares );
+        Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares );
 
         EntityManager em = JpaUtil.getEntityManager();
         ProdutoDao produtoDao = new ProdutoDao(em);

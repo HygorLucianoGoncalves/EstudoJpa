@@ -1,6 +1,7 @@
 package org.example.modelo;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -9,10 +10,10 @@ public class Produto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String nome;
     private String descricao;
-    private Integer preco;
+    private BigDecimal preco;
     private LocalDate  dataCadastro = LocalDate.now();
     @ManyToOne
     private Categoria categoria;
@@ -20,12 +21,12 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, String descricao,  Integer preco) {
+    public Produto(String nome, String descricao,  BigDecimal preco) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
     }
-    public Produto(String nome, String descricao, Integer preco, Categoria categoria) {
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
@@ -51,10 +52,10 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,11 +77,11 @@ public class Produto {
 
     
 
-    public  Integer getPreco() {
+    public  BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco( Integer preco) {
+    public void setPreco( BigDecimal preco) {
         this.preco = preco;
     }
 
