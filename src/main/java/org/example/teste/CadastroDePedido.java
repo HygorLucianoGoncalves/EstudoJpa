@@ -9,6 +9,7 @@ import org.example.util.JpaUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDePedido {
     public static void main(String[] args) {
@@ -34,6 +35,13 @@ public class CadastroDePedido {
         
         BigDecimal totalVendido = pedidoDao.valorTotalVendido();
         System.out.println("VALOR TOTAL = "+totalVendido);
+
+        List<Object[]> relatorio = pedidoDao.relatorioDeVendas();
+        for (Object[] objects : relatorio){
+            System.out.println(objects[0]);
+            System.out.println(objects[1]);
+            System.out.println(objects[2]);
+        }
     }
 
     private static void popularBancoDeDados() {
